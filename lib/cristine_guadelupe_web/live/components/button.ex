@@ -1,4 +1,4 @@
-defmodule CristineGuadelupeWeb.Components.Menu do
+defmodule CristineGuadelupeWeb.Components.Button do
   use CristineGuadelupeWeb, :live_component
 
   def render(assigns) do

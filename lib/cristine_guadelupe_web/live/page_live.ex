@@ -1,6 +1,6 @@
 defmodule CristineGuadelupeWeb.PageLive do
   use CristineGuadelupeWeb, :live_view
-  alias CristineGuadelupeWeb.Components.{Console, Menu}
+  alias CristineGuadelupeWeb.Components.{Console, Button, Title}
 
   def mount(_params, _session, socket) do
     {:ok, socket}
@@ -16,21 +16,16 @@ defmodule CristineGuadelupeWeb.PageLive do
 
   defp render_title(assigns) do
     ~L"""
-    <text x="50%" y="75" dominant-baseline="middle" text-anchor="middle"
-      font-family="VideoGameFont" font-size="20" fill="AliceBlue" opacity="0.7">
-      welcome
-    </text>
-    <text x="50%" y="100" dominant-baseline="middle" text-anchor="middle"
-      font-family="Verdana" font-size="20" fill="AliceBlue" opacity="0.7">
-      - - - - - - -
-    </text>
+    <%= live_component(@socket, Title, title: "welcome") %>
     """
   end
 
   defp render_menu(assigns) do
     ~L"""
-    <%= live_component(@socket, Menu, label: "tetris", action: "tetris", position: "150") %>
-    <%= live_component(@socket, Menu, label: "about me", action: "about", position: "325") %>
+    <%= live_component(@socket, Button, label: "tetris", action: "tetris", position: "150") %>
+    <%= live_component(@socket, Button, label: "soon", action: "", position: "200") %>
+    <%= live_component(@socket, Button, label: "soon", action: "", position: "250") %>
+    <%= live_component(@socket, Button, label: "about me", action: "about", position: "325") %>
     """
   end
 
