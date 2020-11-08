@@ -19,7 +19,7 @@ config :cristine_guadelupe, CristineGuadelupeWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
-  check_origin: ["//cristineguadelupe.me"],
+  check_origin: false,
   watchers: [
     node: [
       "node_modules/webpack/bin/webpack.js",

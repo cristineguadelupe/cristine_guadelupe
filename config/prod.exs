@@ -25,7 +25,7 @@ config :cristineguadelupe, CristineGuadelupe.Repo,
 # which you should run after static files are built and
 # before starting your production server.
 config :cristine_guadelupe, CristineGuadelupeWeb.Endpoint,
-  url: [host: "cristineguadelupe.gigalixirapp.com", port: 80],
+  url: [host: "cristineguadelupe.me", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
