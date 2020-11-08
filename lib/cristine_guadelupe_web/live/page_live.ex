@@ -1,6 +1,6 @@
 defmodule CristineGuadelupeWeb.PageLive do
   use CristineGuadelupeWeb, :live_view
-  alias CristineGuadelupeWeb.Components.Console
+  alias CristineGuadelupeWeb.Components.{Console, Menu}
 
   def mount(_params, _session, socket) do
     {:ok, socket}
@@ -29,38 +29,12 @@ defmodule CristineGuadelupeWeb.PageLive do
 
   defp render_menu(assigns) do
     ~L"""
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="85" y="150" width="150" height="40">
-        <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0px; height:100%;">
-            <button phx-click="tetris" class="console-menu" type="button" style="width:100%; height:100%;">
-              tetris
-            </button>
-        </body>
-    </foreignObject>
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="85" y="200" width="150" height="40">
-        <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0px; height:100%;">
-            <button class="console-menu" type="button" style="width:100%; height:100%;">
-              snake
-            </button>
-        </body>
-    </foreignObject>
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="85" y="250" width="150" height="40">
-        <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0px; height:100%;">
-            <button class="console-menu" type="button" style="width:100%; height:100%;">
-              one more
-            </button>
-        </body>
-    </foreignObject>
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="85" y="325" width="150" height="40">
-        <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0px; height:100%;">
-            <button phx-click="about" class="console-menu" type="button" style="width:100%; height:100%;">
-              about me
-            </button>
-        </body>
-    </foreignObject>
+    <%= live_component(@socket, Menu, label: "tetris", action: "tetris", position: "150") %>
+    <%= live_component(@socket, Menu, label: "about me", action: "about", position: "325") %>
     """
   end
 
-  defp play(socket) do
+  defp tetris(socket) do
     socket
     |> push_redirect(to: "/games/tetris")
   end
@@ -69,8 +43,8 @@ defmodule CristineGuadelupeWeb.PageLive do
     |> push_redirect(to: "/aboutme")
   end
 
-  def handle_event("play", _, socket) do
-    {:noreply, socket |> play}
+  def handle_event("tetris", _, socket) do
+    {:noreply, socket |> tetris}
   end
   def handle_event("about", _, socket) do
     {:noreply, socket |> about}
