@@ -19,6 +19,8 @@ defmodule CristineGuadelupeWeb.Router do
 
     live "/", HomeLive, :index
     live "/aboutme", AboutMeLive
+    live "/games/tetris", Tetris.Playing
+    live "/games/tetris/gameover", Tetris.GameOver
   end
 
   # Other scopes may use custom stacks.
