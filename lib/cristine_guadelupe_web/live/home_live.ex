@@ -1,4 +1,4 @@
-defmodule CristineGuadelupeWeb.PageLive do
+defmodule CristineGuadelupeWeb.HomeLive do
   use CristineGuadelupeWeb, :live_view
   alias CristineGuadelupeWeb.Components.{Console, Button, Title}
 

@@ -17,7 +17,8 @@ defmodule CristineGuadelupeWeb.Router do
   scope "/", CristineGuadelupeWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    live "/", HomeLive, :index
+    live "/aboutme", AboutMeLive
   end
 
   # Other scopes may use custom stacks.
