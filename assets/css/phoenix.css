@@ -99,3 +99,9 @@ header nav a {
     margin: 2rem 1rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .phx-hero {
+    padding: 1em 1em 1em;
+  }
+}
