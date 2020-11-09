@@ -166,3 +166,13 @@
 foreignObject {
   zoom: -internal-reset-effective !important;
 }
+
+body {
+  background: lightblue url("/images/4.jpg") no-repeat fixed center;
+  background-size: cover; 
+}
+
+.phx-hero {
+  border: none;
+  background: none;
+}
