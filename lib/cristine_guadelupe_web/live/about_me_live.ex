@@ -1,7 +1,7 @@
 defmodule CristineGuadelupeWeb.AboutMeLive do
   use CristineGuadelupeWeb, :live_view
 
-  alias CristineGuadelupeWeb.Components.{Console, Button}
+  alias CristineGuadelupeWeb.Components.{Console, Button, Title}
 
   def mount(_params, _session, socket) do
     {:ok, socket}
@@ -12,6 +12,13 @@ defmodule CristineGuadelupeWeb.AboutMeLive do
       <%= live_component(@socket, Console, assigns: assigns) %>
       <%= render_illustration(assigns) %>
       <%= render_menu(assigns) %>
+      <%= render_title(assigns) %>
+    """
+  end
+
+  defp render_title(assigns) do
+    ~L"""
+    <%= live_component(@socket, Title, title: "cristine guadelupe") %>
     """
   end
 

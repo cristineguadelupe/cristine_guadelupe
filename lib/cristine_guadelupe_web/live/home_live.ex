@@ -17,7 +17,7 @@ defmodule CristineGuadelupeWeb.HomeLive do
 
   defp render_title(assigns) do
     ~L"""
-    <%= live_component(@socket, Title, title: "welcome") %>
+    <%= live_component(@socket, Title, title: "cristine guadelupe") %>
     """
   end
 
@@ -32,10 +32,6 @@ defmodule CristineGuadelupeWeb.HomeLive do
 
   defp render_background(assigns) do
     ~L"""
-    <svg x="60" y="10" width="200" height="200" opacity="0.5"
-      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <image href="images/bird.png" height="200" width="200"/>
-    </svg>
     <svg x="60" y="298" width="200" height="200" opacity="0.25"
       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <image href="images/floral.png" height="200" width="200"/>
