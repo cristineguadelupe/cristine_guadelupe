@@ -176,3 +176,25 @@ body {
   border: none;
   background: none;
 }
+
+/* MasterKey */
+.flex-container-row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-container-row > div {
+  background-color: #f1f1f1;
+  width: 24px;
+  margin: 2px;
+  text-align: center;
+}
+
+.flex-container-row .heart {
+  background-color: transparent;
+  width: 12px;
+}
+
+.pipe-divider {
+  color: rgba($color: #F0F8FF, $alpha: 0.7);
+}
