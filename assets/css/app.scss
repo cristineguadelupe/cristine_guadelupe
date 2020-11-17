@@ -201,6 +201,46 @@ body {
 }
 
 .invalid-guess {
-  opacity: 50%;
   cursor: not-allowed;
+}
+
+.flex-container-guess {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-container-guess > div {
+  margin: 0 5px;
+  padding: 0;
+}
+
+.flex-container-guess button {
+  margin: 0;
+  padding: 0 10px;
+  width: auto;
+  text-align: center;
+  text-transform: none;
+  font-family: "VideoGameFont";
+}
+
+.flex-container-guess input {
+  margin: 0;
+  width: 70px;
+  border: snow;
+  background: #504B7D;
+  font-family: "VideoGameFont";
+  color: white;
+}
+
+div#tries {
+  padding-top: 5px;
+  width: 40px;
+  font-family: "VideoGameFont";
+}
+
+span.invalid-feedback {
+  color: white;
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 75%;
 }

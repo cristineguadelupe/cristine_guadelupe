@@ -56,13 +56,13 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
 
   def render_rows(assigns) do
     ~L"""
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="62" y="50" width="200" height="350">
+    <foreignObject xmlns="http://www.w3.org/2000/svg" x="65" y="50" width="200" height="350">
       <%= for row <- @game.rows do %>
       <div class="flex-container-row">
         <%= for guess <- row.guess do %>
           <div style="background-color: <%= "#{bg_color(guess)}" %> "> <%= guess %> </div>
         <% end %>
-        <spam class="pipe-divider"> |> </spam>
+        <span class="pipe-divider"> |> </span>
         <%= for i <- (0..row.score.reds), i > 0 do %>
         <div class="heart">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -73,7 +73,7 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
         <%= for i <- (0..row.score.whites), i > 0 do %>
         <div class="heart">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path fill="gray" d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
+            <path fill="#F8F8FF" d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
           </svg>
         </div>
         <% end %>
@@ -85,21 +85,17 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
 
   defp render_guess_form(assigns) do
     ~L"""
-    <foreignObject xmlns="http://www.w3.org/2000/svg" x="60" y="400" width="200" height="200">
-      <div id="guess" class=" <%= visibility(@game.status) %> ">
-        <%= form_for @changeset, "#", [as: :guess, phx_change: :validate, phx_submit: :guess], fn f -> %>
-          <div class="field">
-            <label>Guess:
-              <%= text_input f, :guess, autofocus: "true"%>
-            </label>
-            <%= error_tag f, :guess %>
+    <foreignObject xmlns="http://www.w3.org/2000/svg" x="60" y="400" width="200" height="100">
+      <%= form_for @changeset, "#", [as: :guess, phx_change: :validate, phx_submit: :guess], fn f -> %>
+        <div class="flex-container-guess">
+          <div><%= text_input f, :guess, autofocus: "true"%></div>
+          <div><%= submit "guess!", class: if !@changeset.valid?, do: "invalid-guess" %></div>
+          <div id="tries" style="background-color: <%= "#{color(@tries)}" %> ">
+            <span id="tries"> <%= @tries %> </span>
           </div>
-          <%= submit "Submit", class: if !@changeset.valid?, do: "invalid-guess" %>
-          <div style="background-color: <%= "#{color(@tries)}" %> ">
-            <p> <%= @tries %> <p>
-          </div>
-        <% end %>
-      </div>
+        </div>
+        <div id="invalid-guess"> <%= error_tag f, :guess %> <div>
+      <% end %>
     </foreignObject>
     """
   end
