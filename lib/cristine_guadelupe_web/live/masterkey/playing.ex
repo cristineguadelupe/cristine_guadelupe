@@ -1,5 +1,6 @@
 defmodule CristineGuadelupeWeb.MasterKey.Playing do
   use CristineGuadelupeWeb, :live_view
+  alias CristineGuadelupe.MasterKey
   alias CristineGuadelupeWeb.Components.{Console}
 
   def mount(_params, _session, socket) do
