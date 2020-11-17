@@ -86,20 +86,20 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
   defp render_guess_form(assigns) do
     ~L"""
     <foreignObject xmlns="http://www.w3.org/2000/svg" x="60" y="400" width="200" height="200">
-    <div id="guess" class=" <%= visibility(@game.status) %> ">
-      <%= form_for @changeset, "#", [as: :guess, phx_change: :validate, phx_submit: :guess], fn f -> %>
-        <div class="field">
-          <label>Guess:
-            <%= text_input f, :guess, autofocus: "true"%>
-          </label>
-          <%= error_tag f, :guess %>
-        </div>
-        <%= submit "Submit", class: if !@changeset.valid?, do: "opacity-50 cursor-not-allowed" %>
-        <div class="shadow-xs text-center px-4 py-2 m-2 <%= "bg-#{color(@tries)}" %> ">
-          <p class="text-gray-100 opacity-90"> <%= @tries %> <p>
-        </div>
-      <% end %>
-    </div>
+      <div id="guess" class=" <%= visibility(@game.status) %> ">
+        <%= form_for @changeset, "#", [as: :guess, phx_change: :validate, phx_submit: :guess], fn f -> %>
+          <div class="field">
+            <label>Guess:
+              <%= text_input f, :guess, autofocus: "true"%>
+            </label>
+            <%= error_tag f, :guess %>
+          </div>
+          <%= submit "Submit", class: if !@changeset.valid?, do: "invalid-guess" %>
+          <div style="background-color: <%= "#{color(@tries)}" %> ">
+            <p> <%= @tries %> <p>
+          </div>
+        <% end %>
+      </div>
     </foreignObject>
     """
   end

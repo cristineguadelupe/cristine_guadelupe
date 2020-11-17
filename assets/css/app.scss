@@ -188,6 +188,7 @@ body {
   width: 24px;
   margin: 2px;
   text-align: center;
+  border-radius: 10%;
 }
 
 .flex-container-row .heart {
@@ -197,4 +198,9 @@ body {
 
 .pipe-divider {
   color: rgba($color: #F0F8FF, $alpha: 0.7);
+}
+
+.invalid-guess {
+  opacity: 50%;
+  cursor: not-allowed;
 }
