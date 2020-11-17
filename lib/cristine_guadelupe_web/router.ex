@@ -24,6 +24,7 @@ defmodule CristineGuadelupeWeb.Router do
     live "/games/tetris/gameover", Tetris.GameOver
 
     live "/games/masterkey", MasterKey.Playing
+    live "/games/masterkey/gameover", MasterKey.GameOver
   end
 
   # Other scopes may use custom stacks.

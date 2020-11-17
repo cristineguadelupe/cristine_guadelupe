@@ -38,12 +38,19 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
     assign(socket, tries: tries)
   end
 
+  defp maybe_end_game(%{assigns: %{game: %{status: :lost}}} = socket) do
+    socket
+    |> push_redirect(to: "/games/masterkey/gameover")
+  end
+  defp maybe_end_game(socket), do: socket
+
   defp guess(socket, guess) do
     socket
     |> assign(board: MasterKey.guess(socket.assigns.board, guess))
     |> game
     |> tries
     |> changeset(%{})
+    |> maybe_end_game()
   end
 
   def render_board(assigns) do
@@ -111,19 +118,9 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
     {:noreply, guess(socket, params)}
   end
 
-  def handle_event("new_game", _params, socket) do
-    {:noreply, build(socket, %{})}
-  end
-  def handle_event("try_again", _params, socket) do
-    {:noreply, build(socket, %{answer: socket.assigns.board.answer})}
-  end
-
   defp color(tries) when tries < 3, do: "rgb(229, 62, 62)"
   defp color(tries) when tries < 6, do: "rgb(236, 201, 75)"
   defp color(tries) when tries > 5, do: "rgb(56, 161, 105)"
-
-  defp visibility(status) when status in [:won, :lost], do: "invisible"
-  defp visibility(:playing), do: "visible"
 
   defp bg_color(1), do: "Orange"
   defp bg_color(2), do: "DodgerBlue"
