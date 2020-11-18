@@ -2,14 +2,15 @@ defmodule CristineGuadelupeWeb.MasterKey.Won do
   use CristineGuadelupeWeb, :live_view
   alias CristineGuadelupeWeb.Components.{Console}
 
-  def mount(_params, _session, socket) do
-    {:ok, socket}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, key: params["key"])}
   end
 
   defp render_content(assigns) do
     ~L"""
     <%= live_component(@socket, Console, assigns: assigns) %>
     <%= render_won(assigns) %>
+    <%= render_message(assigns) %>
     <%= render_play_again(assigns) %>
     """
   end
@@ -20,6 +21,18 @@ defmodule CristineGuadelupeWeb.MasterKey.Won do
       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <image href="/images/masterkey_won.png" height="400" width="200"/>
     </svg>
+    """
+  end
+
+  defp render_message(assigns) do
+    ~L"""
+    <text x="70" y="70" font-family="VideoGameFont" font-size="18" fill="AliceBlue" opacity="0.7">
+      you found
+      the key!
+    </text>
+    <text x="50%" y="125" dominant-baseline="middle" text-anchor="middle" font-size="25" fill="AliceBlue" opacity="0.7">
+      <%= @key %>
+    </text>
     """
   end
 

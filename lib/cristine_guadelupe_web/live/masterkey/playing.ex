@@ -44,7 +44,7 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
   end
   defp maybe_end_game(%{assigns: %{game: %{status: :won}}} = socket) do
     socket
-    |> push_redirect(to: "/games/masterkey/won")
+    |> push_redirect(to: "/games/masterkey/won?key=#{socket.assigns.board.answer |> Enum.join()}")
   end
   defp maybe_end_game(socket), do: socket
 
