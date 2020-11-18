@@ -42,6 +42,10 @@ defmodule CristineGuadelupeWeb.MasterKey.Playing do
     socket
     |> push_redirect(to: "/games/masterkey/gameover")
   end
+  defp maybe_end_game(%{assigns: %{game: %{status: :won}}} = socket) do
+    socket
+    |> push_redirect(to: "/games/masterkey/won")
+  end
   defp maybe_end_game(socket), do: socket
 
   defp guess(socket, guess) do
